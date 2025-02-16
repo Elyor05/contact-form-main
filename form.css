@@ -23,7 +23,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    min-height: 100vh;
     margin: 0;
     position: relative;
 }
@@ -78,8 +78,8 @@ input, textarea {
     padding: 8px;
     border: 1px solid #ccc;
     border-radius: 5px;
-    cursor: pointer;
     outline: none;
+    transition: .5s;
 }
 
 :is(input,textarea):focus, :is(input,textarea):hover {
