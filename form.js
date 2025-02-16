@@ -46,6 +46,15 @@ const handleSubmit = (e) => {
     const dataEmail = data.email;
 
     // success state
+    if (!checkName(dataName)) {
+        alert("Please enter valid First name");
+    }
+    if (!checkName(dataSurname)) {
+        alert("Please enter valid Last name");
+    }
+    if (!validateEmail(dataEmail)) {
+        alert("Please enter valid email");
+    }
     if (checkName(dataName) && checkName(dataSurname) && validateEmail(dataEmail) && data.query && data.message && data.consent) {
         document.getElementById("modal").style.top = '10px'
     } else {

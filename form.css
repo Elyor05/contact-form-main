@@ -69,7 +69,7 @@ h1 {
 
 label {
     display: block;
-    margin-bottom: 5px;
+    padding-bottom: 5px;
     cursor: pointer;
 }
 
@@ -79,11 +79,12 @@ input, textarea {
     border: 1px solid #ccc;
     border-radius: 5px;
     outline: none;
-    transition: .5s;
+    transition: .1s;
 }
 
-:is(input,textarea):focus, :is(input,textarea):hover {
-    border: 2px outset var(--Green-600);
+:is(input:not(:is([type="radio"],[type='checkbox'])), textarea):focus, :is(input:not(:is([type="radio"],[type='checkbox'])), textarea):hover {
+    border: 1px solid var(--Green-600);
+    outline: 2px outset var(--Green-600);
 }
 
 textarea {
@@ -116,7 +117,7 @@ textarea {
 }
 
 .query-type > label:hover {
-    border: 2px outset var(--Green-600);
+    outline: 2px outset var(--Green-600);
     background-color: var(--Green-200);
 }
 
