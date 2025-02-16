@@ -1,0 +1,188 @@
+:root {
+    --Green-200: hsl(148, 38%, 91%);
+    --Green-600: hsl(169, 82%, 27%);
+    --Red: hsl(0, 66%, 54%);
+    --White: hsl(0, 0%, 100%);
+    --Grey-500: hsl(186, 15%, 59%);
+    --Grey-900: hsl(187, 24%, 22%);
+}
+
+@font-face {
+    font-family: 'Karla';
+    src: url('./assets/fonts/static/Karla-Regular.ttf');
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Karla', sans-serif;
+    background-color: var(--Green-200);
+    color: var(--Grey-900);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    position: relative;
+}
+
+#modal {
+    position: absolute;
+    top: -100vh;
+    background-color: var(--Grey-900);
+    color: var(--Green-200);
+    padding: 20px;
+    border-radius: 10px;
+    font-size: .8rem;
+    transition: .3s ease-in-out;
+}
+
+#modal h2 {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+#modal * {
+    margin: 0;
+}
+
+h1 {
+    margin-top: 0;
+}
+
+#container {
+    background-color: var(--White);
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 45vw;
+}
+
+.form-group {
+    margin-bottom: 15px;
+    width: 100%;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    cursor: pointer;
+}
+
+input, textarea {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    cursor: pointer;
+    outline: none;
+}
+
+:is(input,textarea):focus, :is(input,textarea):hover {
+    border: 2px outset var(--Green-600);
+}
+
+textarea {
+    resize: none;
+}
+
+.query-type {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.query-type > label {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    transition: .3s ease-in-out;
+}
+
+.query-type > label > input, .checkbox input {
+    width: initial;
+    margin: 0 10px;
+}
+
+.query-type > label > input:checked {
+    content: url("./assets/images/icon-radio-selected.svg");
+}
+
+.query-type > label:hover {
+    border: 2px outset var(--Green-600);
+    background-color: var(--Green-200);
+}
+
+.checkbox {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.checkbox label {
+    margin: 0;
+}
+
+.checkbox input:checked {
+    content: url("./assets/images/icon-checkbox-check.svg");
+}
+
+button {
+    font-family: 'Karla', sans-serif;
+    width: 100%;
+    background: var(--Green-600);
+    color: var(--White);
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: .3s ease-in-out;
+}
+
+button:hover {
+    background: var(--Grey-900);
+}
+
+button:active {
+    background: var(--Green-600);
+}
+
+@media only screen and (max-width: 769px) {
+    #container {
+        width: 60vw;
+    }
+}
+
+@media only screen and (max-width: 575.98px) {
+    #modal {
+        font-size: .6rem;
+    }
+
+    #container {
+        width: 80vw;
+    }
+
+    .query-type {
+        flex-direction: column;
+        gap: 0;
+    }
+}
+
+/*styles for JS*/
+.hide {
+    display: none !important;
+}
+
+.error-text {
+    display: block;
+    font-size: .8rem;
+    color: var(--Red);
+}
