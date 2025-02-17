@@ -15,6 +15,12 @@ function errorState(data) {
     for (const dataKey in data) {
         if (data[dataKey] === '') {
             document.getElementById(`${dataKey}`).nextElementSibling.classList.remove("hide");
+            if (dataKey === 'firstName') {
+                document.getElementById('firstName').nextElementSibling.innerText = 'This field is required';
+            }
+            if (dataKey === 'lastName') {
+                document.getElementById('lastName').nextElementSibling.innerText = 'This field is required';
+            }
         } else {
             document.getElementById(`${dataKey}`).nextElementSibling.classList.add("hide");
         }
@@ -31,19 +37,35 @@ function validateEmail(email) {
     return emailPattern.test(email);
 }
 
+function instantNameCheck() {
+    const instantName = document.getElementById('firstName').value;
+    const nameErrorText = document.getElementById('firstName').nextElementSibling
+    if (!checkName(instantName) && instantName !== '') {
+        nameErrorText.classList.remove("hide");
+        nameErrorText.innerText = 'Please enter a valid First Name';
+    } else if (instantName === '') {
+        nameErrorText.classList.remove("hide");
+        nameErrorText.innerText = 'This field is required';
+    } else {
+        nameErrorText.classList.add("hide");
+    }
+}
+
+function instantSurnameCheck() {
+    const instantSurname = document.getElementById('lastName').value;
+    const surnameErrorText = document.getElementById('lastName').nextElementSibling
+    if (!checkName(instantSurname) && instantSurname !== '') {
+        surnameErrorText.classList.remove("hide");
+        surnameErrorText.innerText = 'Please enter a valid First Name';
+    } else if (instantSurname === '') {
+        surnameErrorText.classList.remove("hide");
+        surnameErrorText.innerText = 'This field is required';
+    } else {
+        surnameErrorText.classList.add("hide");
+    }
+}
+
 function successState(dataName, dataSurname, dataEmail, data) {
-    if (!checkName(dataName) && dataName !== '') {
-        document.getElementById('firstName').nextElementSibling.nextElementSibling.classList.remove("hide");
-    } else {
-        document.getElementById('firstName').nextElementSibling.nextElementSibling.classList.add("hide");
-    }
-
-    if (!checkName(dataSurname) && dataSurname !== '') {
-        document.getElementById('lastName').nextElementSibling.nextElementSibling.classList.remove("hide");
-    } else {
-        document.getElementById('lastName').nextElementSibling.nextElementSibling.classList.add("hide");
-    }
-
     if (!validateEmail(dataEmail) && dataEmail !== '') {
         document.getElementById('email').nextElementSibling.classList.remove("hide");
     }
