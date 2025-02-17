@@ -128,7 +128,7 @@ textarea {
 }
 
 .checkbox label {
-    margin: 0;
+    padding: 0;
 }
 
 .checkbox input:checked {
