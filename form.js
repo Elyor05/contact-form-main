@@ -15,12 +15,6 @@ function errorState(data) {
     for (const dataKey in data) {
         if (data[dataKey] === '') {
             document.getElementById(`${dataKey}`).nextElementSibling.classList.remove("hide");
-            if (dataKey === 'firstName') {
-                document.getElementById('firstName').nextElementSibling.innerText = 'This field is required';
-            }
-            if (dataKey === 'lastName') {
-                document.getElementById('lastName').nextElementSibling.innerText = 'This field is required';
-            }
         } else {
             document.getElementById(`${dataKey}`).nextElementSibling.classList.add("hide");
         }
