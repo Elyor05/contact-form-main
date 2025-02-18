@@ -11,13 +11,25 @@ function errorState(data) {
     } else {
         document.getElementById("consent").nextElementSibling.classList.add("hide");
     }
-
-    for (const dataKey in data) {
-        if (data[dataKey] === '') {
-            document.getElementById(`${dataKey}`).nextElementSibling.classList.remove("hide");
-        } else {
-            document.getElementById(`${dataKey}`).nextElementSibling.classList.add("hide");
-        }
+    if (checkName(data['firstName'])) {
+        document.getElementById('firstName').nextElementSibling.classList.add("hide");
+    } else {
+        document.getElementById('firstName').nextElementSibling.classList.remove("hide");
+    }
+    if (checkName(data['lastName'])) {
+        document.getElementById('lastName').nextElementSibling.classList.add("hide");
+    } else {
+        document.getElementById('lastName').nextElementSibling.classList.remove("hide");
+    }
+    if (validateEmail(data['email'])) {
+        document.getElementById('email').nextElementSibling.classList.add("hide");
+    } else {
+        document.getElementById('email').nextElementSibling.classList.remove("hide");
+    }
+    if (data['message'] !== '') {
+        document.getElementById('message').nextElementSibling.classList.add("hide");
+    } else {
+        document.getElementById('message').nextElementSibling.classList.remove("hide");
     }
 }
 
@@ -59,11 +71,48 @@ function instantSurnameCheck() {
     }
 }
 
-function successState(dataName, dataSurname, dataEmail, data) {
-    if (!validateEmail(dataEmail) && dataEmail !== '') {
-        document.getElementById('email').nextElementSibling.classList.remove("hide");
+function instantEmailCheck() {
+    const instantEmail = document.getElementById('email').value;
+    const emailErrorText = document.getElementById('email').nextElementSibling
+    if ((!validateEmail(instantEmail) && instantEmail !== '') || instantEmail === '') {
+        emailErrorText.classList.remove("hide");
+    } else {
+        emailErrorText.classList.add("hide");
     }
+}
 
+function instantQueryCheck() {
+    const instantGeneral = document.getElementById('general');
+    const instantSupport = document.getElementById('support');
+    const queryErrorText = document.getElementById('query').nextElementSibling
+    if (!instantGeneral.checked || !instantSupport.checked) {
+        queryErrorText.classList.add("hide")
+    } else {
+        queryErrorText.classList.remove("hide")
+    }
+}
+
+function instantMessageCheck() {
+    const instantMessage = document.getElementById('message').value;
+    const messageErrorText = document.getElementById('message').nextElementSibling
+    if (instantMessage !== '') {
+        messageErrorText.classList.add("hide")
+    } else {
+        messageErrorText.classList.remove("hide")
+    }
+}
+
+function instantConsentCheck() {
+    const instantConsent = document.getElementById('consents');
+    const consentErrorText = document.getElementById('consent').nextElementSibling
+    if (instantConsent.checked) {
+        consentErrorText.classList.add("hide")
+    } else {
+        consentErrorText.classList.remove("hide")
+    }
+}
+
+function successState(dataName, dataSurname, dataEmail, data) {
     if (checkName(dataName) && checkName(dataSurname) && validateEmail(dataEmail) && data.query && data.message && data.consent) {
         document.getElementById("modal").style.top = '10px'
     } else {
