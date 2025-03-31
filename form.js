@@ -106,9 +106,7 @@ function successState(dataName, dataSurname, dataEmail, data) {
             request: data.query,
             message: data.message,
         }));
-        setTimeout(() =>
-            window.location.replace(window.location.pathname.replace('index.html', 'data.html')),
-            1000)
+        setTimeout(() => window.location.href = '/contact-form-main/data.html',1000)
     } else {
         document.getElementById("modal").style.top = '-100vh'
     }
